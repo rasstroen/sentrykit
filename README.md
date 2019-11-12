@@ -35,4 +35,6 @@ func main() {
 
 ```
 
+If you specify `err` field sentry considers as an exception and shows your callstack etc. Otherwise sentry triggers a message.
+
 ![image](https://user-images.githubusercontent.com/2131624/68679460-94d5d200-0568-11ea-988e-dbcfee0fcacb.png)
