@@ -25,12 +25,12 @@ func main() {
 
 	logger := sentrykit.NewSentryLogger(client)
 
+	// msg will be used as Event Title in Sentry
 	logger.Log("msg", "User updated", "tries", 1, "properties", map[string]string{"username": "gopher"})
+	// if you provide err field it should be error type to get calstack for sentry
 	logger.Log("err", errors.New("test error"))
 
-	if !client.Flush(time.Second * 5) {
-		log.Fatal("flush timeout")
-	}
+	client.Flush(time.Second * 5)
 }
 
 ```
