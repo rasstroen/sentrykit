@@ -1,0 +1,29 @@
+package main
+
+import (
+	"errors"
+	"github.com/fr05t1k/sentrykit"
+	"github.com/getsentry/sentry-go"
+	"log"
+	"os"
+	"time"
+)
+
+func main() {
+	client, err := sentry.NewClient(sentry.ClientOptions{
+		Dsn:         os.Getenv("SENTRY_DSN"),
+		Environment: "dev",
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	logger := sentrykit.NewSentryLogger(client)
+
+	logger.Log("msg", "User updated", "tries", 1, "properties", map[string]string{"username": "gopher"})
+	logger.Log("err", errors.New("test error"))
+
+	if !client.Flush(time.Second * 5) {
+		log.Fatal("flush timeout")
+	}
+}
