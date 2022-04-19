@@ -1,4 +1,4 @@
-module github.com/fr05t1k/sentrykit
+module github.com/rasstroen/sentrykit
 
 go 1.18
 

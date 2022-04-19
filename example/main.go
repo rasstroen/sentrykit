@@ -2,8 +2,8 @@ package main
 
 import (
 	"errors"
-	"github.com/fr05t1k/sentrykit"
 	"github.com/getsentry/sentry-go"
+	"github.com/rasstroen/sentrykit"
 	"log"
 	"os"
 	"time"
